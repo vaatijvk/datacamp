@@ -1,0 +1,66 @@
+#2.A Jupyter notebook is a document that contains text cells (what you're reading right now) and code cells. What is special with a notebook is that it's interactive: You can change or add code cells, and then run a cell by first selecting it and then clicking the run cell button above ( ▶| Run ) or hitting ctrl + enter.
+256 * 60 * 24 # Children × minutes × hours
+#1.Put any code in code cells
+def greet(first_name, last_name):
+    greeting = 'My name is ' + last_name+ ', ' + first_name + ' ' + last_name + '!'
+    return greeting
+
+# Replace with your first and last name.
+# That is, unless your name is already James Bond.
+greet('Judith', 'Vaati')
+
+#3. Jupyter notebooks ♡ data
+#We've seen that notebooks can display basic objects such as numbers and strings. But notebooks also support the objects used in data science, which makes them great for interactive data analysis!
+#For example, below we create a pandas DataFrame by reading in a csv-file with the average global temperature for the years 1850 to 2016. If we look at the head of this DataFrame the notebook will render it as a nice-looking table.
+# Importing the pandas module
+import pandas as pd
+
+# Reading in the global temperature data
+global_temp = pd.read_csv('datasets/global_temperature.csv')
+
+# Take a look at the first datapoints
+print(global_temp)
+
+
+#4. Jupyter notebooks ♡ plots¶
+#Tables are nice but — as the saying goes — "a plot can show a thousand data points". Notebooks handle plots as well, but it requires a bit of magic. Here magic does not refer to any arcane rituals but to so-called "magic commands" that affect how the Jupyter notebook works. Magic commands start with either % or %% and the command we need to nicely display plots inline is %matplotlib inline. With this magic in place, all plots created in code cells will automatically be displayed inline.
+#Let's take a look at the global temperature for the last 150 years.
+# Setting up inline plotting using jupyter notebook "magic"
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+
+# Plotting global temperature in degrees celsius by year
+plt.plot(global_temp['year'], global_temp['degrees_celsius'])
+
+# Adding some nice labels 
+plt.xlabel('year') 
+plt.ylabel('degrees_celcius') 
+
+#5. Jupyter notebooks ♡ a lot more
+#Tables and plots are the most common outputs when doing data analysis, but Jupyter notebooks can render many more types of outputs such as sound, animation, video, etc. Yes, almost anything that can be shown in a modern web browser. This also makes it possible to include interactive widgets directly in the notebook!
+#For example, this (slightly complicated) code will create an interactive map showing the locations of the three largest smartphone companies in 2016. You can move and zoom the map, and you can click the markers for more info!
+
+# Making a map using the folium module
+import folium
+phone_map = folium.Map()
+
+# Top three smart phone companies by market share in 2016
+companies = [
+    {'loc': [37.4970,  127.0266], 'label': 'Samsung: 20.5%'},
+    {'loc': [37.3318, -122.0311], 'label': 'Apple: 14.4%'},
+    {'loc': [22.5431,  114.0579], 'label': 'Huawei: 8.9%'}] 
+
+# Adding markers to the map
+for company in companies:
+    marker = folium.Marker(location=company['loc'], popup=company['label'])
+    marker.add_to(phone_map)
+
+# The last object in the cell always gets shown in the notebook
+phone_map
+
+
+
+
+
+
