@@ -1,1 +1,46 @@
 
+#Plotting two variables
+
+import matplotlib.pyplot as plt 
+import pandas as pd
+train = pd.read_csv('Train.csv')
+test = pd.read_csv('Test.csv')
+
+# Initalize a Figure and Axes
+fig, ax = plt.subplots()
+
+# Plot the age_of_respondent  variable in blue
+ax.plot(train.index, train["age_of_respondent"], color='blue')
+
+# Create a twin Axes that shares the x-axis
+ax2 = ax.twinx()
+
+# Plot the household_size in red
+ax2.plot(train.index, train["household_size"], color='red')
+
+plt.show()
+
+
+
+
+#annotating a plot of time_series data
+#Plotting two variables
+
+import matplotlib.pyplot as plt 
+import pandas as pd
+train = pd.read_csv('Train.csv')
+test = pd.read_csv('Test.csv')
+
+# Initalize a Figure and Axes
+fig, ax = plt.subplots()
+
+# Plot the age_of_respondent  variable in blue
+ax.plot(train.index, train["age_of_respondent"], color='grey')
+
+ax.annotate(">80 ", xy=(pd.Timestamp('2010'), 80))
+
+
+plt.show()
+
+
+#Quantitative comparisons: bar-charts
