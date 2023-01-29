@@ -44,3 +44,22 @@ plt.show()
 
 
 #Quantitative comparisons: bar-charts
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+fig, ax = plt.subplots()
+
+train = pd.read_csv('Train.csv', index_col = 0)
+
+# Plot a bar-chart of location type as function of the country
+ax.bar(train.index, train["location_type"])
+
+# Set the x-axis tick labels to the country names
+ax.set_xticklabels(train.index, rotation=90)
+
+# Set the y-axis label
+ax.set_ylabel("age_of_respondent")
+
+plt.show()
+
