@@ -1,0 +1,38 @@
+import pandas as pd
+population=pd.read_csv('country_population.csv')
+frate=pd.read_csv('fertility_rate.csv')
+lexpectancy=pd.read_csv('life_expectancy.csv')
+
+
+
+print(population.describe())
+
+# Print the head of the population data
+
+print(population.head())
+
+
+# Print information about population
+print(population.info())
+
+
+
+# Print the shape of population
+print(population.shape)
+
+
+# Print a description of population
+print(population.describe())
+
+
+print(population.index)
+
+print(population["Country Name"])
+
+#sorting rows
+#sorting population with country code
+population_code = population.sort_values("Country Code")
+print(population_code.head())
+
+
+
