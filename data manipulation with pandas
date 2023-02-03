@@ -34,5 +34,20 @@ print(population["Country Name"])
 population_code = population.sort_values("Country Code")
 print(population_code.head())
 
+#sorting rows with two columns
+population_code = population.sort_values(["Country Code", "Country Name"], ascending=[True, False])
+print(population_code.head())
+
+#Subsetting columns
+Country_Name = population['Country Name']
+print(Country_Name.head())
+
+#subsetting rows
+pop_10000=population[population['1960']>10000]
+print(pop_10000)
+
+#Subsetting rows by categorical variables
+
+
 
 
