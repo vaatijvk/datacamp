@@ -34,6 +34,12 @@ print(population["Country Name"])
 population_code = population.sort_values("Country Code")
 print(population_code.head())
 
+# Add p_average col as average of the total
+population['p_average'] = population['total'] / 2
+
+# See the result
+print(population.head())
+
 #sorting rows with two columns
 population_code = population.sort_values(["Country Code", "Country Name"], ascending=[True, False])
 print(population_code.head())
@@ -48,6 +54,33 @@ print(pop_10000)
 
 #Subsetting rows by categorical variables
 
+#adding new column
+# Add total col as sum of 1960 and 1970
+population["total"]=population["1960"] + population["1961"]
+
+# Add p_average col as average of the total
+population['p_average'] = population['total'] / 2
+
+# See the result
+print(population.head())
 
 
+#summary statistics in pandas
+# Print the head of the population DataFrame
+print(population.head())
+
+# Print the info about the popoulation DataFrame
+print(population.info())
+
+# Print the mean of 1960
+print(population["1960"].mean())
+
+# Print the median of 1960
+print(population["1960"].median())
+
+# Print the maximum of the 1960 column
+print(population['1960'].max())
+
+# Print the minimum of the 1960 column
+print( population['1960'].min())
 
