@@ -84,3 +84,21 @@ print(population['1960'].max())
 # Print the minimum of the 1960 column
 print( population['1960'].min())
 
+#Summarizing categorical data
+# Drop duplicate Country Name/Country Code combinations
+import pandas as pd
+frate=pd.read_csv('fertility_rate.csv')
+
+fertility_rate_types = frate.drop_duplicates(subset=["Country Name", "Country Code"])
+print(fertility_rate_types.head())
+
+
+# Pivot for mean weekly_sales by store type and holiday 
+mean_sales_by_type_holiday = sales.pivot_table(values="weekly_sales", index="type", columns="is_holiday")
+
+# Print mean_sales_by_type_holiday
+print(mean_sales_by_type_holiday)
+
+
+
+
