@@ -1,0 +1,31 @@
+
+port pandas as pd
+import numpy as np
+food_consumption=pd.read_csv('food_consumption.csv')
+#Create two DataFrames: one that holds the rows of food_consumption for 'Belgium' and another that holds rows for 'USA'. Call these be_consumption and usa_consumption
+be_consumption = food_consumption[food_consumption['country'] == 'Belgium']
+usa_consumption = food_consumption[food_consumption['country'] == 'USA']
+
+#Calculate the mean and median of kilograms of food consumed per person per year for both countries.
+
+print(np.mean(be_consumption['consumption']))
+print(np.mean(usa_consumption['consumption']))
+print(np.median(be_consumption['consumption']))
+print(np.median(usa_consumption['consumption']))
+
+
+#Subset for Belgium and USA only
+be_and_usa = food_consumption[(food_consumption['country'] == "Belgium") | (food_consumption['country'] == 'USA')]
+
+# Group by country, select consumption column, and compute mean and median
+print(be_and_usa.groupby('country')['consumption'].agg([np.mean, np.median]))
+
+#results
+42.132727272727266
+44.650000000000006
+12.59
+14.58
+              mean  median
+country                   
+Belgium  42.132727   12.59
+USA      44.650000   14.58
